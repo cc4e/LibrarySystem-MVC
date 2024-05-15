@@ -1,0 +1,74 @@
+﻿@model LibrarySystem.Models.Login
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .equal-input-size {
+        width: 40%; 
+    }
+</style>
+
+<style>
+    .center-content2 {
+        margin: 0 auto;
+        width: 60%; 
+    }
+</style>
+<style>
+    
+    .center-content {
+        margin: 0 auto;
+        width: 40%; 
+    }
+</style>
+
+
+<div style="text-align: center;">
+    <img src="~/Images/library2.png" alt="Login Image" width="1000" height="90" />
+</div>
+
+@using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @class = "center-content" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>
+        Login
+    </h4>
+
+    <hr />
+
+
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UserName, new { @class = "form-control equal-input-size" })
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-10">
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control equal-input-size" })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="center-content2">
+            <input type="submit" value="Login" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+
+<div class="center-content">
+    @Html.ActionLink("Back to List", "Index")
+</div>
